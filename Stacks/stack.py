@@ -26,10 +26,3 @@ class Stack:
 # non obfuscated stack implementation 
 
 
-stack = Stack()
-for i in range(0, 10):
-	stack.push(i)
-print(stack.peek())
-print(stack.pop())
-stack.show_full_stack()
-
