@@ -180,6 +180,25 @@ class LinkedStack:
         new_end = self.remove()
         self.endadd(new_end)
 
+
+
+
+
+#################################################################
+## reverse a linked list
+
+
+
+    def reverse(self):
+        previous = None
+        current = self.head
+        while current:
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
+        self.head = previous
+
 ################################################################
 ## DETECT A LIST WITH DUPLICATE POINTERS TO HEAD
 
