@@ -49,6 +49,10 @@ class LinkedList:
         return self._count(self.head)
     def _count(self, node):
         return 0 if not node else 1 + self._count(node.next)
+
+
+
+
 ############################################################
 ## CONTAINS FUNCTIONS
     def contains(self, item):
@@ -125,7 +129,6 @@ class LinkedList:
                 print(node.item)
                 rprint(node.next)
         return rprint(self.head)
-
 ##################################################################
 ## ADD ITEM TO THE END
 
@@ -174,6 +177,17 @@ class LinkedList:
             previous = current
             current = next
         self.head = previous
+## THIS CODE IS AN INTERNAL METHOD IE ACTS ON A LL, NOT PASSED A LL INSTANCE
+    def even(self):
+        return self.rcounteven(self.head, 0)
+
+
+    def rcounteven(self, start_point, count = 0):
+        if not start_point:
+            return count
+        elif not start_point.item % 2:
+            return self.rcounteven(start_point.next, count + 1)
+        return self.rcounteven(start_point.next, count)
 
 
 ################################################################
@@ -207,6 +221,7 @@ class LinkedList:
                 return True
             pointer = pointer.next
         return False
+
 
 
 
@@ -250,12 +265,13 @@ def reven_count(lst):
 
 
 
+
+
 ll = LinkedList()
 ll.add(2)
 ll.add(3)
 ll.add(4)
-ll.print_list()
-print("reversing now")
-ll = ll._sort()
-ll.print_list()
-#print(reven_count(ll))
+print(ll.even())
+#ll = ll._sort()
+#ll.print_list()
+print(reven_count(ll))
