@@ -206,7 +206,7 @@ class LinkedStack:
         root = llinstace.head
         pointer = llinstace.head
         while pointer:
-            if pointer.next and pointer.next != root:
+            if pointer.next and pointer.next == root:
                 return True
             pointer = pointer.next
         return False
