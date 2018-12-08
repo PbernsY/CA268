@@ -189,6 +189,41 @@ class LinkedList:
             return self.rcounteven(start_point.next, count + 1)
         return self.rcounteven(start_point.next, count)
 
+#################################################################
+## RECURSIVE MAX, BOTH OBFUSCATED AND NORMALLY ;)
+    def rlargest(self):
+        def _largest(node, current_max):
+            if not node:
+                return current_max
+            if node.item > current_max:
+                return _largest(node.next, node.item)
+            return _largest(node.next, current_max)
+        return _largest(self.head, self.head.item)
+
+    def largest(self):
+        return self._rlargest(self.head, self.head.item)
+
+    def _rlargest(self, node, current_max):
+        if not node:
+            return current_max
+        if node.item > current_max:
+            return self._rlargest(node.next, node.item)
+        return self._rlargest(node.next, current_max)
+
+
+###############################################################
+## CONSECUTIVE DUPLICATES -> TRUE ELSE FALSE
+## USES A LAGGING TAIL RECURSIVE CONCEPT
+    def consec(self):
+        return self.rconsec(self.head, None)
+
+    def rconsec(self, node, item):
+        if not node:
+            return False
+        if node.item == item:
+            return True
+        return self.rconsec(node.next, node.item)
+
 
 ################################################################
 ## sort a linkedlist
@@ -268,10 +303,12 @@ def reven_count(lst):
 
 
 ll = LinkedList()
+
 ll.add(2)
 ll.add(3)
 ll.add(4)
-print(ll.even())
+print(ll.consec())
+print(ll.rlargest())
 #ll = ll._sort()
 #ll.print_list()
 print(reven_count(ll))
