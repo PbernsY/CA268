@@ -22,37 +22,18 @@ class LinkedList:
     def is_empty(self):
         return self.head == None
 
-class LinkedStack:
-    def __init__(self):
-        self.stack = LinkedList()
+#class LinkedStack:
+ #   def __init__(self):
+  #      self.stack = LinkedList()
 
-    def push(self, item):
-        self.stack.add(item)
+   # def push(self, item):
+    #    self.stack.add(item)
 
-    def pop(self):
-        return self.stack.remove()
+    #def pop(self):
+     #   return self.stack.remove()
 
-    def isempty(self):
-        return self.stack.is_empty()
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    #def isempty(self):
+     #   return self.stack.is_empty()
 
 
 
@@ -99,11 +80,6 @@ class LinkedStack:
         while current and current.item != item:
             current = current.next
         return current.next.item if current else None
-
-
-
-
-
 
 ##############################
 ## RETURN PREVIOUS ITEM OF NODE GIVEN NODE VALUE
@@ -199,7 +175,28 @@ class LinkedStack:
             current = next
         self.head = previous
 
+
 ################################################################
+## sort a linkedlist
+
+    def _sort(self):
+        if self.count() > 1:
+            intermediate = []
+            current_node = self.head
+            intermediate.append(current_node.item)
+            while current_node.next:
+                current_node = current_node.next
+                intermediate.append(current_node.item)
+            intermediate = sorted(intermediate, reverse = True)
+            sorted_ll = LinkedList()
+            for i in range(len(intermediate)):
+                sorted_ll.add(intermediate[i])
+            return sorted_ll
+        else:
+            return []
+
+
+###############################################################
 ## DETECT A LIST WITH DUPLICATE POINTERS TO HEAD
 
     def loopy(llinstace):
@@ -253,11 +250,12 @@ def reven_count(lst):
 
 
 
-
 ll = LinkedList()
-for i in range(0, 10):
-    ll.add(i)
-
-ll.rrotate()
+ll.add(2)
+ll.add(3)
+ll.add(4)
+ll.print_list()
+print("reversing now")
+ll = ll._sort()
 ll.print_list()
 #print(reven_count(ll))
