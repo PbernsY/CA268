@@ -49,6 +49,23 @@ class LinkedList:
         return self._count(self.head)
     def _count(self, node):
         return 0 if not node else 1 + self._count(node.next)
+#############################################################
+## count elements within a range
+
+    def range(self, lo, hi):
+        return self._range(lo, hi, self.head)
+
+    def _range(self, lo, hi, pointer):
+        if not pointer:
+            return 0
+        elif pointer.item <= hi and pointer.item >= lo:
+            return 1 + self._range(lo, hi,pointer.next)
+        return self._range(lo, hi, pointer.next)
+
+
+
+
+
 
 
 
@@ -307,8 +324,4 @@ ll = LinkedList()
 ll.add(2)
 ll.add(3)
 ll.add(4)
-print(ll.consec())
-print(ll.rlargest())
-#ll = ll._sort()
-#ll.print_list()
-print(reven_count(ll))
+print(ll.range(0, 3))
